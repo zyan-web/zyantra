@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, Check, ChevronLeft, ChevronRight, Mic, Smartphone, Workflow } from "lucide-react";
+import { Bot, Check, ChevronLeft, ChevronRight, Cloud, CodeXml, Megaphone, Sparkles } from "lucide-react";
 import { useRef, type PointerEvent } from "react";
 import { site, type Service } from "@/data/site";
 import { SectionHeading } from "./SectionHeading";
@@ -8,9 +8,10 @@ import { container } from "./ui";
 
 const icons: Record<Service["icon"], typeof Bot> = {
   bot: Bot,
-  mic: Mic,
-  workflow: Workflow,
-  smartphone: Smartphone,
+  code: CodeXml,
+  megaphone: Megaphone,
+  sparkles: Sparkles,
+  cloud: Cloud,
 };
 
 /**
@@ -59,9 +60,9 @@ export function Services() {
         <SectionHeading
           id="services-title"
           eyebrow="Services"
-          title="What I can"
-          accent="build for you"
-          description="Drag or swipe through the services. Each one is scoped to your goals, not a template."
+          title="Everything you need to"
+          accent="build and grow"
+          description="Five services, one team. Drag or swipe through them, then pick what fits your goals."
         />
         <div className="mb-10 hidden gap-2 md:mb-14 md:flex">
           <button

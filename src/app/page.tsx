@@ -1,6 +1,9 @@
 import { Audience } from "@/components/Audience";
+import { CallToAction } from "@/components/CallToAction";
 import { Contact } from "@/components/Contact";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Footer } from "@/components/Footer";
+import { Founder } from "@/components/Founder";
 import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { Problems } from "@/components/Problems";
@@ -29,10 +32,13 @@ export default function Home() {
         <Projects />
         <Problems />
         <Stats />
+        <Founder />
         <Reviews />
+        <CallToAction />
         <Contact />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }

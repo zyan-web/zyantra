@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/data/site";
 
-export const alt = `${site.name} — ${site.role}`;
+export const alt = `${site.name}: ${site.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,11 +40,11 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 32, fontWeight: 600 }}>{site.name}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05, maxWidth: 1000 }}>
-            {site.role}
+          <div style={{ fontSize: 56, fontWeight: 700, lineHeight: 1.1, maxWidth: 1050 }}>
+            {site.tagline}
           </div>
           <div style={{ fontSize: 30, color: "#a3a3b2" }}>
-            AI chatbots · Voice agents · Automation · Mobile apps
+            AI Engineering · Web & Apps · Digital Marketing · Cloud
           </div>
         </div>
       </div>

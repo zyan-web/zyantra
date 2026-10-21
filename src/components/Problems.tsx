@@ -17,9 +17,9 @@ export function Problems() {
         <SectionHeading
           id="faq-title"
           eyebrow="Sound familiar?"
-          title="Problems I"
+          title="Problems we"
           accent="solve every week"
-          description="If any of these sound like your team, we should talk."
+          description="If any of these sound like your business, we should talk."
         />
         <ul className="divide-y divide-line border-y border-line">
           {site.faq.map((item, i) => {

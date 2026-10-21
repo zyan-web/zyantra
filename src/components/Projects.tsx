@@ -46,9 +46,9 @@ export function Projects() {
       <SectionHeading
         id="projects-title"
         eyebrow="Selected work"
-        title="Projects that"
-        accent="ship"
-        description="A few things I've built across AI, automation and mobile."
+        title="Work that"
+        accent="ships"
+        description="A selection of what we've built across AI, automation, web and mobile."
       />
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {site.projects.map((project, i) => (
@@ -68,16 +68,22 @@ export function Projects() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 flex gap-2">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                      <GithubIcon width={16} height={16} /> GitHub
-                      <span className="sr-only"> repository for {project.title} (opens in new tab)</span>
-                    </a>
-                    <a href={project.live} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                      <ExternalLink size={16} aria-hidden /> Live
-                      <span className="sr-only"> demo of {project.title} (opens in new tab)</span>
-                    </a>
-                  </div>
+                  {(project.github || project.live) && (
+                    <div className="mt-6 flex gap-2">
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                          <GithubIcon width={16} height={16} /> GitHub
+                          <span className="sr-only"> repository for {project.title} (opens in new tab)</span>
+                        </a>
+                      )}
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                          <ExternalLink size={16} aria-hidden /> Live
+                          <span className="sr-only"> demo of {project.title} (opens in new tab)</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </article>
             </Reveal>

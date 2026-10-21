@@ -1,19 +1,10 @@
 "use client";
 
-import { ArrowUp, Mail } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { useSyncExternalStore } from "react";
 import { footerLinks, site } from "@/data/site";
-import { FiverrIcon, GithubIcon, InstagramIcon, LinkedinIcon, UpworkIcon, WhatsappIcon } from "./BrandIcons";
+import { SocialLinks } from "./SocialLinks";
 import { container } from "./ui";
-
-const socials = [
-  { label: "LinkedIn", href: site.links.linkedin, Icon: LinkedinIcon },
-  { label: "GitHub", href: site.links.github, Icon: GithubIcon },
-  { label: "Instagram", href: site.links.instagram, Icon: InstagramIcon },
-  { label: "Fiverr", href: site.links.fiverr, Icon: FiverrIcon },
-  { label: "Upwork", href: site.links.upwork, Icon: UpworkIcon },
-  { label: "WhatsApp", href: site.links.whatsapp, Icon: WhatsappIcon },
-];
 
 const noopSubscribe = () => () => {};
 
@@ -41,7 +32,7 @@ export function Footer() {
             </span>
             {site.name}
           </p>
-          <p className="mt-3 max-w-xs text-sm text-muted">{site.role}. {site.location}.</p>
+          <p className="mt-3 max-w-xs text-sm text-muted">{site.tagline}</p>
         </div>
 
         <nav aria-label="Footer">
@@ -58,35 +49,12 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="mb-3 text-sm font-medium">Find me online</p>
-          <ul className="flex flex-wrap gap-2">
-            {socials.map(({ label, href, Icon }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${label} (opens in new tab)`}
-                  className="grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground"
-                >
-                  <Icon width={18} height={18} />
-                </a>
-              </li>
-            ))}
-            <li>
-              <a
-                href={`mailto:${site.links.email}`}
-                aria-label="Email"
-                className="grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground"
-              >
-                <Mail size={18} aria-hidden />
-              </a>
-            </li>
-          </ul>
+          <p className="mb-3 text-sm font-medium">Find us online</p>
+          <SocialLinks />
         </div>
       </div>
 
-      <div className={`${container} flex items-center justify-between gap-4 border-t border-line py-6`}>
+      <div className={`${container} flex items-center justify-between gap-4 border-t border-line pt-6 pb-24 md:pb-6`}>
         <p className="text-sm text-muted">
           © {year ?? ""} {site.name}. All rights reserved.
         </p>

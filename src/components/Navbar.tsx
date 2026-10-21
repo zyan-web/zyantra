@@ -45,7 +45,7 @@ export function Navbar() {
           <span>{site.name}</span>
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {site.nav.map((link) => (
             <li key={link.href}>
               <a href={link.href} className="text-sm text-muted transition-colors hover:text-foreground">
@@ -56,12 +56,12 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a href="#contact" className={`${buttonPrimary} hidden !py-2 sm:inline-flex`}>
-            Hire me
+          <a href={site.primaryCta.href} className={`${buttonPrimary} hidden !py-2 sm:inline-flex`}>
+            {site.primaryCta.label}
           </a>
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-full border border-line md:hidden"
+            className="grid size-10 place-items-center rounded-full border border-line lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -80,7 +80,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-line md:hidden"
+            className="overflow-hidden border-t border-line lg:hidden"
           >
             <ul className={`${container} flex flex-col gap-1 py-4`}>
               {site.nav.map((link) => (
@@ -95,8 +95,8 @@ export function Navbar() {
                 </li>
               ))}
               <li className="mt-2">
-                <a href="#contact" onClick={close} className={`${buttonPrimary} w-full`}>
-                  Hire me
+                <a href={site.primaryCta.href} onClick={close} className={`${buttonPrimary} w-full`}>
+                  {site.primaryCta.label}
                 </a>
               </li>
             </ul>

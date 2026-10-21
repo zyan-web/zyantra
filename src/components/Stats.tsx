@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { site, type Stat } from "@/data/site";
 import { container } from "./ui";
 
+const columns = ["", "sm:grid-cols-1", "sm:grid-cols-2", "sm:grid-cols-3", "sm:grid-cols-2 md:grid-cols-4"];
+
 function CountUp({ stat }: { stat: Stat }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" });
@@ -35,7 +37,7 @@ export function Stats() {
 
   return (
     <section aria-label="Stats" className={`${container} py-12 md:py-16`}>
-      <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
+      <dl className={`grid gap-px overflow-hidden rounded-2xl border border-line bg-line ${columns[stats.length]}`}>
         {stats.map((stat) => (
           <div key={stat.label} className="flex flex-col-reverse gap-2 bg-surface p-6 text-center md:p-8">
             <dt className="text-sm text-muted">{stat.label}</dt>

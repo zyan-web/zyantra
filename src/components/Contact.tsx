@@ -72,24 +72,27 @@ export function Contact() {
           <Reveal>
             <p className="mb-3 text-sm font-medium tracking-wide text-accent-strong uppercase">Contact</p>
             <h2 id="contact-title" className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-5xl">
-              {site.contact.heading.split(" ").slice(0, -1).join(" ")}{" "}
-              <span className="accent-word">{site.contact.heading.split(" ").at(-1)}</span>
+              {site.contact.heading} <span className="accent-word">{site.contact.accent}</span>
             </h2>
             <p className="mt-4 text-muted sm:text-lg">{site.contact.subtext}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-              <a href={site.links.whatsapp} target="_blank" rel="noopener noreferrer" className={buttonSecondary}>
-                <WhatsappIcon width={18} height={18} /> Chat on WhatsApp
-              </a>
-              <a href={`mailto:${site.links.email}`} className={buttonSecondary}>
-                <Mail size={18} aria-hidden /> Email me
-              </a>
+              {site.links.whatsapp && (
+                <a href={site.links.whatsapp} target="_blank" rel="noopener noreferrer" className={buttonSecondary}>
+                  <WhatsappIcon width={18} height={18} /> Chat on WhatsApp
+                </a>
+              )}
+              {site.links.email && (
+                <a href={`mailto:${site.links.email}`} className={buttonSecondary}>
+                  <Mail size={18} aria-hidden /> Email us
+                </a>
+              )}
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <form onSubmit={onSubmit} className="space-y-6">
               <fieldset>
-                <legend className="mb-3 text-sm font-medium">I&apos;m interested in…</legend>
+                <legend className="mb-3 text-sm font-medium">What can we help with?</legend>
                 <div className="flex flex-wrap gap-2">
                   {site.contact.interests.map((interest) => {
                     const selected = interests.includes(interest);
@@ -159,7 +162,7 @@ export function Contact() {
                 {status === "success" && (
                   <p className="flex items-start gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-300">
                     <CheckCircle2 size={18} className="mt-0.5 shrink-0" aria-hidden />
-                    Thanks! Your message is on its way. I&apos;ll get back to you soon.
+                    Thanks! Your message is on its way. We&apos;ll get back to you within 24 hours.
                   </p>
                 )}
                 {status === "error" && (

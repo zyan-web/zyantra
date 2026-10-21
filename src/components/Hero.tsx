@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { site } from "@/data/site";
+import { SocialLinks } from "./SocialLinks";
 import { buttonPrimary, buttonSecondary, container } from "./ui";
 
 export function Hero() {
@@ -39,25 +40,23 @@ export function Hero() {
 
         <div className="hero-in [animation-delay:160ms]">
           <p className="mt-6 max-w-2xl text-base text-muted sm:text-lg">{hero.subtext}</p>
-          <p className="mt-4 text-sm text-foreground/80">
-            <span className="font-medium">{site.role}</span>
-            <span className="mx-2 text-muted" aria-hidden>
-              ·
-            </span>
-            <span className="inline-flex items-center gap-1 text-muted">
-              <MapPin size={14} aria-hidden /> {site.location}
-            </span>
+          <p className="mt-4 inline-flex items-center gap-1 text-sm text-muted">
+            <MapPin size={14} aria-hidden /> {site.location}
           </p>
         </div>
 
         <div className="hero-in [animation-delay:240ms] mt-10 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
-          <a href="#contact" className={buttonPrimary}>
-            Hire me <ArrowRight size={16} aria-hidden />
+          <a href={site.primaryCta.href} className={buttonPrimary}>
+            {site.primaryCta.label} <ArrowRight size={16} aria-hidden />
           </a>
-          <a href="#projects" className={buttonSecondary}>
-            See projects
+          <a href={hero.secondaryCta.href} className={buttonSecondary}>
+            {hero.secondaryCta.label}
           </a>
         </div>
+
+        <nav aria-label="Social links" className="hero-in mt-8 [animation-delay:320ms]">
+          <SocialLinks className="justify-center" />
+        </nav>
       </div>
     </section>
   );
