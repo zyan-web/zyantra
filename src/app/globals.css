@@ -9,6 +9,7 @@
   --accent: #5b3df5;
   --accent-hover: #4a2fe0;
   --accent-tint: #f1eeff; /* badges and icon backgrounds only */
+  --band: #1e1b4b; /* deep indigo stats band and CTA gradient end */
 
   --background: #ffffff;
   --surface: #f7f8fa; /* alternate sections, placeholders */
@@ -42,6 +43,7 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-tint: var(--accent-tint);
+  --color-band: var(--band);
   --radius-xl: var(--radius);
   --shadow-card: var(--shadow-card);
   --shadow-card-hover: var(--shadow-card-hover);
@@ -113,7 +115,7 @@ body {
   animation-play-state: paused;
 }
 @media (prefers-reduced-motion: reduce) {
-  /* Show the skills as a static, wrapped list instead of scrolling. */
+  /* Show the chips as a static, wrapped list instead of scrolling. */
   .marquee-track {
     animation: none;
     width: 100%;
@@ -138,4 +140,26 @@ body {
   .hero-in {
     animation: none;
   }
+}
+
+/* Gentle float for the hero chips */
+@keyframes float {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .float {
+    animation: none;
+  }
+}
+
+/* Subtle dot texture, faded towards the bottom */
+.dot-pattern {
+  background-image: radial-gradient(rgb(11 13 18 / 0.08) 1px, transparent 1px);
+  background-size: 14px 14px;
+  mask-image: linear-gradient(to bottom, black 30%, transparent);
 }

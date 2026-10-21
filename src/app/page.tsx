@@ -10,7 +10,7 @@ import { Problems } from "@/components/Problems";
 import { Projects } from "@/components/Projects";
 import { Reviews } from "@/components/Reviews";
 import { Services } from "@/components/Services";
-import { SkillsMarquee } from "@/components/SkillsMarquee";
+import { TechMarquee } from "@/components/TechMarquee";
 import { Stats } from "@/components/Stats";
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
       <main id="main" tabIndex={-1} className="outline-none">
         <div id="top" tabIndex={-1} className="outline-none" />
         <Hero />
-        <SkillsMarquee />
+        <TechMarquee />
         <Audience />
         <div className="border-y border-line bg-surface">
           <Services />

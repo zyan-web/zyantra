@@ -4,9 +4,10 @@ import { animate, inView } from "motion/react";
 import { useEffect, useRef } from "react";
 import { site, type Stat } from "@/data/site";
 import { inViewAmount, shouldAnimateIn } from "@/lib/motion";
-import { container, sectionY } from "./ui";
+import { container } from "./ui";
 
-const columns = ["", "sm:grid-cols-1", "sm:grid-cols-2", "sm:grid-cols-3", "sm:grid-cols-2 md:grid-cols-4"];
+// One row on every screen size (short numbers fit side by side even at 360px).
+const columns = ["", "grid-cols-1", "grid-cols-2", "grid-cols-3", "grid-cols-4"];
 
 /** Renders the final number in the HTML; counts up from 0 only when the animation can actually run. */
 function CountUp({ stat }: { stat: Stat }) {
@@ -51,12 +52,12 @@ export function Stats() {
   if (stats.length === 0) return null;
 
   return (
-    <section aria-label="Stats" className={`${container} ${sectionY}`}>
-      <dl className={`grid gap-px overflow-hidden rounded-xl border border-line bg-line shadow-card ${columns[stats.length]}`}>
+    <section aria-label="Stats" className="bg-band text-white">
+      <dl className={`${container} grid divide-x divide-white/10 py-10 md:py-20 ${columns[stats.length]}`}>
         {stats.map((stat) => (
-          <div key={stat.label} className="flex flex-col-reverse gap-2 bg-card px-6 py-8 text-center md:py-10">
-            <dt className="text-sm text-muted">{stat.label}</dt>
-            <dd className="text-[clamp(2.5rem,9vw,3.5rem)] leading-none font-bold tracking-[-0.03em] text-foreground">
+          <div key={stat.label} className="flex flex-col-reverse justify-end gap-2 px-2 text-center">
+            <dt className="text-xs leading-snug font-medium text-indigo-200 sm:text-sm">{stat.label}</dt>
+            <dd className="text-[clamp(2rem,9vw,4rem)] leading-none font-bold tracking-[-0.03em] text-white">
               <CountUp stat={stat} />
               <span className="sr-only">
                 {stat.value}

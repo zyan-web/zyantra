@@ -4,7 +4,7 @@ import Image from "next/image";
 import { site } from "@/data/site";
 import { LinkedinIcon } from "./BrandIcons";
 import { Reveal } from "./Reveal";
-import { buttonSecondary, card, container, eyebrow, heading2, sectionYJoined } from "./ui";
+import { buttonSecondary, card, container, eyebrow, heading2, sectionY } from "./ui";
 
 // Checked at build time: shows the photo if it exists in /public, otherwise a styled placeholder.
 const hasPhoto = existsSync(join(process.cwd(), "public", site.founder.photo));
@@ -12,10 +12,10 @@ const hasPhoto = existsSync(join(process.cwd(), "public", site.founder.photo));
 export function Founder() {
   const { founder } = site;
   return (
-    <section id="founder" aria-labelledby="founder-title" className={`${container} ${sectionYJoined}`}>
-      <div className={`grid items-center gap-10 p-6 sm:p-10 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-14 md:p-12 ${card}`}>
+    <section id="founder" aria-labelledby="founder-title" className={`${container} ${sectionY}`}>
+      <div className={`grid items-center gap-8 p-5 sm:p-10 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-14 md:p-12 ${card}`}>
         <Reveal>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-56 overflow-hidden sm:max-w-xs rounded-xl border border-line bg-surface">
+          <div className="relative isolate mx-auto aspect-[4/5] w-full max-w-56 overflow-hidden rounded-xl border border-line bg-linear-to-br from-indigo-100 via-violet-50 to-teal-50 sm:max-w-xs">
             {hasPhoto ? (
               <Image
                 src={founder.photo}
@@ -30,7 +30,8 @@ export function Founder() {
                 aria-label={`${founder.name} photo placeholder`}
                 className="grid size-full place-items-center"
               >
-                <span aria-hidden className="text-8xl font-bold tracking-[-0.03em] text-muted/40">
+                <div aria-hidden className="dot-pattern absolute inset-0 -z-10" />
+                <span aria-hidden className="text-8xl font-bold tracking-[-0.03em] text-indigo-300">
                   {founder.name.charAt(0)}
                 </span>
               </div>

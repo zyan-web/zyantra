@@ -3,8 +3,9 @@
 import { Bot, Check, ChevronLeft, ChevronRight, Cloud, CodeXml, Megaphone, Sparkles } from "lucide-react";
 import { useRef, type PointerEvent } from "react";
 import { site, type Service } from "@/data/site";
+import { hues } from "@/lib/hues";
 import { SectionHeading } from "./SectionHeading";
-import { card, cardLift, container, iconButton, iconTile, sectionY } from "./ui";
+import { container, iconButton, sectionY } from "./ui";
 
 const icons: Record<Service["icon"], typeof Bot> = {
   bot: Bot,
@@ -101,24 +102,27 @@ export function Services() {
               key={service.title}
               className="w-[85%] max-w-[26rem] shrink-0 snap-start sm:w-[60%] lg:w-[24rem]"
             >
-              <article className={`flex h-full flex-col p-6 md:p-8 ${card} ${cardLift}`}>
-                <div className="flex items-center justify-between">
-                  <span className={iconTile}>
-                    <Icon size={20} aria-hidden />
-                  </span>
-                  <span className="font-mono text-sm text-muted">0{i + 1}</span>
-                </div>
-                <h3 className="mt-6 text-xl font-semibold tracking-[-0.01em]">{service.title}</h3>
-                <p className="mt-2 mb-6 leading-relaxed text-muted">{service.description}</p>
-                <ul className="mt-auto space-y-2.5 border-t border-line pt-6">
-                  {service.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-[15px] leading-normal">
-                      <Check size={16} className="mt-0.5 shrink-0 text-muted" aria-hidden />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+              {/* 1px wrapper: grey border at rest, accent gradient border on hover */}
+              <div className="h-full rounded-xl bg-line p-px shadow-card transition duration-200 hover:-translate-y-0.5 hover:bg-linear-to-br hover:from-accent hover:via-violet-400 hover:to-teal-400 hover:shadow-card-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                <article className="flex h-full flex-col rounded-[11px] bg-card p-5 md:p-8">
+                  <div className="flex items-center justify-between">
+                    <span className={`grid size-11 place-items-center rounded-xl ${hues[service.hue].tile}`}>
+                      <Icon size={20} aria-hidden />
+                    </span>
+                    <span className="font-mono text-sm text-muted">0{i + 1}</span>
+                  </div>
+                  <h3 className="mt-6 text-xl font-semibold tracking-[-0.01em]">{service.title}</h3>
+                  <p className="mt-2 mb-6 leading-relaxed text-muted">{service.description}</p>
+                  <ul className="mt-auto space-y-2.5 border-t border-line pt-6">
+                    {service.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2 text-[15px] leading-normal">
+                        <Check size={16} className="mt-0.5 shrink-0 text-muted" aria-hidden />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </div>
             </li>
           );
         })}

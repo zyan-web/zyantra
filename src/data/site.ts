@@ -4,18 +4,27 @@
  * Search for "TODO" to find everything that still needs your real details.
  */
 
+/** Soft colour family used for project covers and icon tiles (see src/lib/hues.ts). */
+export type Hue = "indigo" | "teal" | "amber" | "rose" | "sky" | "emerald" | "violet" | "orange";
+
 export type Service = {
   title: string;
   description: string;
   points: string[];
   icon: "bot" | "code" | "megaphone" | "sparkles" | "cloud";
+  hue: Hue;
 };
 
 export type Project = {
   title: string;
   description: string;
   tags: string[];
-  /** Path inside /public, e.g. "/projects/rag-qa.png". A styled placeholder shows if the file is missing. */
+  /** Badge on the cover. */
+  category: "AI Agent" | "Automation" | "App" | "API";
+  /** Cover icon, shown when there is no screenshot. */
+  icon: "file-search" | "audio-lines" | "clipboard-check" | "gauge" | "message-circle" | "book-open" | "brain" | "stethoscope";
+  hue: Hue;
+  /** Path inside /public, e.g. "/projects/rag-qa.png". Shown in a device mockup if it exists; otherwise a designed cover. */
   image: string;
   /** Leave empty ("") to hide the button. */
   github: string;
@@ -48,6 +57,7 @@ const services: Service[] = [
       "Custom AI that does real work inside your business, grounded in your data and connected to your tools.",
     points: ["AI agents", "RAG chatbots", "GenAI solutions", "Workflow automation"],
     icon: "bot",
+    hue: "indigo",
   },
   {
     title: "Web & App Development",
@@ -55,6 +65,7 @@ const services: Service[] = [
       "Fast, polished websites and apps that turn visitors into customers and give your team the tools it needs.",
     points: ["Business websites", "Web & mobile apps", "APIs", "AI integrations"],
     icon: "code",
+    hue: "teal",
   },
   {
     title: "Digital Marketing",
@@ -62,6 +73,7 @@ const services: Service[] = [
       "Get found by the right people and give them a reason to choose you, across search and social.",
     points: ["SEO", "Social media management", "Content strategy", "Digital advertising"],
     icon: "megaphone",
+    hue: "amber",
   },
   {
     title: "AI-Powered Growth",
@@ -74,6 +86,7 @@ const services: Service[] = [
       "Data-driven marketing strategies",
     ],
     icon: "sparkles",
+    hue: "rose",
   },
   {
     title: "Cloud & Deployment",
@@ -81,6 +94,7 @@ const services: Service[] = [
       "We take what we build from demo to dependable, on infrastructure that grows with your traffic.",
     points: ["Scalable infrastructure", "API integration", "Production deployment"],
     icon: "cloud",
+    hue: "sky",
   },
 ];
 
@@ -142,31 +156,20 @@ export const site = {
     subtext:
       "We help businesses automate workflows, streamline operations and scale faster, with AI agents, websites and apps, growth marketing and production-ready cloud.",
     secondaryCta: { label: "See our work", href: "#projects" },
+    /** The illustrative AI assistant card beside the headline. */
+    visual: {
+      assistant: "Zyan Assistant",
+      status: "Online",
+      userMessage: "Can you automate our appointment bookings?",
+      reply: "Yes. I'll connect your calendar and WhatsApp so bookings confirm themselves, 24/7.",
+      tasks: ["Calendar connected", "WhatsApp linked", "Reminders scheduled"],
+      inputPlaceholder: "Ask anything…",
+      chips: ["100+ projects", "AI Agents", "24/7 automation"],
+    },
   },
 
-  skills: [
-    "AI Agents",
-    "RAG",
-    "LangChain",
-    "OpenAI",
-    "Claude",
-    "LiveKit",
-    "MCP",
-    "n8n",
-    "Python",
-    "FastAPI",
-    "Next.js",
-    "Flutter",
-    "Android",
-    "Firebase",
-    "SEO",
-    "Social Media",
-    "Content Strategy",
-    "Paid Ads",
-    "Docker",
-    "AWS",
-    "CI/CD",
-  ],
+  /** "Tech we work with" chip marquee. */
+  techStack: ["Python", "LangChain", "OpenAI", "LiveKit", "Flutter", "Next.js", "AWS", "n8n", "FastAPI"],
 
   audiences: [
     {
@@ -193,6 +196,9 @@ export const site = {
       title: "RAG Document Q&A",
       description: "Ask questions over your own documents and get answers with sources.",
       tags: ["Python", "RAG", "LangChain", "Vector DB"],
+      category: "AI Agent",
+      icon: "file-search",
+      hue: "indigo",
       image: "/projects/rag-document-qa.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: live demo URL
@@ -201,6 +207,9 @@ export const site = {
       title: "LiveKit Voice Agent",
       description: "Real-time voice AI with MCP tools, shipped via CI/CD to AWS EC2.",
       tags: ["LiveKit", "MCP", "GitHub Actions", "AWS EC2"],
+      category: "AI Agent",
+      icon: "audio-lines",
+      hue: "teal",
       image: "/projects/livekit-voice-agent.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: live demo URL
@@ -209,6 +218,9 @@ export const site = {
       title: "AI Quiz & Evaluation System",
       description: "LLM-generated quizzes with rubric-based grading of answers.",
       tags: ["LLM", "Python", "FastAPI", "Evaluation"],
+      category: "App",
+      icon: "clipboard-check",
+      hue: "amber",
       image: "/projects/ai-quiz-evaluation.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: live demo URL
@@ -217,6 +229,9 @@ export const site = {
       title: "Sentiment Intelligence API",
       description: "Classifies client feedback as positive, negative or neutral.",
       tags: ["NLP", "FastAPI", "Python", "REST API"],
+      category: "API",
+      icon: "gauge",
+      hue: "rose",
       image: "/projects/sentiment-intelligence-api.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: live demo URL
@@ -225,6 +240,9 @@ export const site = {
       title: "WhatsApp AI Support Bot",
       description: "Customer support on WhatsApp powered by n8n and the WhatsApp Business API.",
       tags: ["n8n", "WhatsApp API", "LLM", "Automation"],
+      category: "Automation",
+      icon: "message-circle",
+      hue: "sky",
       image: "/projects/whatsapp-ai-support-bot.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: live demo URL
@@ -233,6 +251,9 @@ export const site = {
       title: "Safir-e-Quran",
       description: "A Flutter app for learning Tajweed step by step.",
       tags: ["Flutter", "Dart", "Firebase", "Mobile"],
+      category: "App",
+      icon: "book-open",
+      hue: "emerald",
       image: "/projects/safir-e-quran.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: Play Store / live URL
@@ -241,6 +262,9 @@ export const site = {
       title: "AI Quiz LLM Project",
       description: "LLM-powered app that generates quizzes on any topic and evaluates answers instantly.",
       tags: ["LLM", "Python", "GenAI", "Evaluation"],
+      category: "App",
+      icon: "brain",
+      hue: "violet",
       image: "/projects/ai-quiz-llm.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: live demo URL
@@ -250,6 +274,9 @@ export const site = {
       description:
         "AI agent that automates healthcare admin work such as appointment scheduling, patient records and staff workflows.",
       tags: ["AI Agent", "LLM", "Automation", "Healthcare"],
+      category: "AI Agent",
+      icon: "stethoscope",
+      hue: "orange",
       image: "/projects/healthcare-ops-agent.png",
       github: "", // TODO: GitHub repo URL
       live: "", // TODO: live demo URL

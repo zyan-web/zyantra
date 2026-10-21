@@ -1,7 +1,7 @@
 // Shared Tailwind class strings. One radius (rounded-xl, --radius) and one shadow (shadow-card) site-wide.
 
-const buttonBase =
-  "inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 text-[15px] font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60";
+export const buttonBase =
+  "inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 text-[15px] font-semibold transition duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:active:scale-100";
 
 export const buttonPrimary = `${buttonBase} bg-accent text-white shadow-card hover:bg-accent-hover`;
 
@@ -21,14 +21,14 @@ export const cardLift =
 
 export const container = "mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8";
 
-/** Vertical rhythm for every section: 64px mobile, 96px desktop. */
-export const sectionY = "py-16 md:py-24";
+/** Vertical rhythm for every section: 48px mobile, 96px desktop. */
+export const sectionY = "py-12 md:py-24";
 
 /** For a section that directly follows another on the same background, so the gap isn't doubled. */
-export const sectionYJoined = "pb-16 md:pb-24";
+export const sectionYJoined = "pb-12 md:pb-24";
 
 export const eyebrow = "mb-3 text-sm font-semibold text-accent";
 
-export const heading2 = "text-[clamp(1.75rem,5.5vw,2.75rem)] leading-[1.15] font-bold tracking-[-0.02em] text-balance";
+export const heading2 = "text-[clamp(1.625rem,5.5vw,2.75rem)] leading-[1.15] font-bold tracking-[-0.02em] text-balance";
 
 export const lead = "text-base leading-relaxed text-muted sm:text-lg";

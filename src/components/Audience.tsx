@@ -1,10 +1,12 @@
 import { Building2, Handshake, Rocket } from "lucide-react";
-import { site } from "@/data/site";
+import { site, type Hue } from "@/data/site";
+import { hues } from "@/lib/hues";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { card, cardLift, container, iconTile, sectionY } from "./ui";
+import { card, cardLift, container, sectionY } from "./ui";
 
 const icons = [Rocket, Building2, Handshake];
+const tileHues: Hue[] = ["indigo", "teal", "amber"];
 
 export function Audience() {
   return (
@@ -15,8 +17,8 @@ export function Audience() {
           const Icon = icons[i % icons.length];
           return (
             <Reveal key={audience.title} delay={i * 0.08} className="h-full">
-              <article className={`h-full p-6 md:p-8 ${card} ${cardLift}`}>
-                <span className={iconTile}>
+              <article className={`h-full p-5 md:p-8 ${card} ${cardLift}`}>
+                <span className={`grid size-11 place-items-center rounded-xl ${hues[tileHues[i % tileHues.length]].tile}`}>
                   <Icon size={20} aria-hidden />
                 </span>
                 <h3 className="mt-5 text-lg font-semibold tracking-[-0.01em]">{audience.title}</h3>
