@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUp } from "lucide-react";
 import { useSyncExternalStore } from "react";
 import { footerLinks, site } from "@/data/site";
@@ -27,12 +28,10 @@ export function Footer() {
       <div className={`${container} grid gap-10 py-12 md:grid-cols-[1.5fr_1fr_1fr]`}>
         <div>
           <p className="flex items-center gap-2.5 font-semibold">
-            <span aria-hidden className="grid size-8 place-items-center rounded-lg bg-accent text-xs font-bold text-white">
-              {site.initials}
-            </span>
+            <Image src={site.logo} alt="" width={32} height={32} unoptimized className="size-8" />
             {site.name}
           </p>
-          <p className="mt-3 max-w-xs text-sm text-muted">{site.tagline}</p>
+          <p className="mt-3 max-w-xs text-sm text-muted">{site.footerLine}</p>
         </div>
 
         <nav aria-label="Footer">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -36,12 +37,7 @@ export function Navbar() {
     >
       <nav aria-label="Main" className={`${container} flex h-16 items-center justify-between`}>
         <a href="#top" className="flex items-center gap-2.5 font-semibold tracking-tight" onClick={close}>
-          <span
-            aria-hidden
-            className="grid size-8 place-items-center rounded-lg bg-accent text-xs font-bold text-white"
-          >
-            {site.initials}
-          </span>
+          <Image src={site.logo} alt="" width={32} height={32} unoptimized className="size-8" />
           <span>{site.name}</span>
         </a>
 

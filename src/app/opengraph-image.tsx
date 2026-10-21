@@ -21,23 +21,11 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 72,
-              height: 72,
-              borderRadius: 18,
-              background: site.accent,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 32,
-              fontWeight: 700,
-              color: "white",
-            }}
-          >
-            {site.initials}
-          </div>
-          <div style={{ fontSize: 32, fontWeight: 600 }}>{site.name}</div>
+          {/* Same "Z" mark as public/logo.svg */}
+          <svg width="72" height="72" viewBox="0 0 64 64">
+            <path fill={site.accent} d="M10 8h44v12L29 44h25v12H10V44l25-24H10z" />
+          </svg>
+          <div style={{ fontSize: 44, fontWeight: 700 }}>{site.name}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ fontSize: 56, fontWeight: 700, lineHeight: 1.1, maxWidth: 1050 }}>

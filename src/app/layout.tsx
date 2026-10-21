@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title: site.seo.title,
   description: site.seo.description,
   applicationName: site.name,
+  icons: { icon: site.logo },
   authors: [{ name: site.name }],
   alternates: { canonical: "/" },
   openGraph: {

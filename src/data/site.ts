@@ -84,20 +84,23 @@ const services: Service[] = [
   },
 ];
 
+const name = "Zyantra";
+
 export const site = {
-  name: "Your Agency", // TODO: your agency name (logo, metadata, OG image)
-  /** Used for the favicon, logo mark and OG image. */
-  initials: "YA", // TODO: your agency initials
+  name,
+  /** Logo mark (navbar, footer, favicon). The OG image draws the same "Z" in `accent`. */
+  logo: "/logo.svg",
+  footerLine: `${name}: intelligent systems that scale.`,
   tagline:
     "We build intelligent digital solutions that help businesses automate workflows, streamline operations, and scale faster.",
   location: "Based in Pakistan, working with clients worldwide",
   /** Your deployed domain, no trailing slash. Used for SEO, sitemap and robots. */
-  url: "https://TODO-your-domain.com", // TODO: your live domain
-  /** The one accent colour for the whole site (CSS variable --accent, OG image, favicon). */
+  url: "https://zyantra.vercel.app",
+  /** The one accent colour for the whole site (CSS variable --accent, OG image). public/logo.svg has its own copy of this colour. */
   accent: "#7C5CFF",
 
   seo: {
-    title: "Your Agency | AI Engineering, Web & App Development, Digital Marketing", // TODO: swap in your agency name
+    title: `${name} | AI Engineering, Web & App Development, Digital Marketing`,
     description:
       "We build intelligent digital solutions that help businesses automate workflows, streamline operations, and scale faster: AI agents, apps, marketing and cloud deployment.",
   },
@@ -291,7 +294,7 @@ export const site = {
 
   founder: {
     name: "Alam",
-    title: "Founder & CEO",
+    title: `Founder & CEO of ${name}`,
     /** Put your photo at public/founder.jpg. A styled placeholder shows if it's missing. */
     photo: "/founder.jpg",
     bio: [
