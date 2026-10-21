@@ -1,30 +1,17 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { site } from "@/data/site";
 import { SocialLinks } from "./SocialLinks";
-import { buttonPrimary, buttonSecondary, container } from "./ui";
+import { buttonPrimary, buttonSecondary, container, lead } from "./ui";
 
 export function Hero() {
   const { hero } = site;
   return (
-    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden">
+    <section aria-labelledby="hero-title">
       {/* CSS entrance (not Motion) so the hero is visible before JS loads */}
-      {/* Accent glow + grid backdrop */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,var(--accent-soft),transparent_70%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgb(255_255_255/0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgb(255_255_255/0.04)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]"
-      />
-
-      <div className={`${container} flex flex-col items-center pt-14 pb-14 text-center sm:pt-28 md:pt-36 md:pb-24`}>
+      <div className={`${container} flex flex-col items-center pt-14 pb-16 text-center sm:pt-24 md:pt-32 md:pb-24`}>
         <div className="hero-in">
-          <p className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-xs text-muted sm:text-sm">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75 motion-reduce:animate-none" />
-              <span className="relative inline-flex size-2 rounded-full bg-accent" />
-            </span>
+          <p className="inline-flex items-center gap-2 rounded-xl bg-accent-tint px-3.5 py-1.5 text-xs font-semibold text-accent sm:text-sm">
+            <span aria-hidden className="size-1.5 rounded-full bg-accent" />
             {hero.eyebrow}
           </p>
         </div>
@@ -32,14 +19,14 @@ export function Hero() {
         <div className="hero-in [animation-delay:80ms]">
           <h1
             id="hero-title"
-            className="mt-6 max-w-4xl text-[clamp(2rem,8.5vw,4.5rem)] leading-[1.08] font-semibold tracking-tight text-balance"
+            className="mt-6 max-w-4xl text-[clamp(2.125rem,7.5vw,4.25rem)] leading-[1.08] font-bold tracking-[-0.03em] text-balance"
           >
             {hero.headlineStart} <span className="accent-word">{hero.accent}</span> {hero.headlineEnd}
           </h1>
         </div>
 
         <div className="hero-in [animation-delay:160ms]">
-          <p className="mt-6 max-w-2xl text-base text-muted sm:text-lg">{hero.subtext}</p>
+          <p className={`mt-6 max-w-2xl ${lead}`}>{hero.subtext}</p>
           <p className="mt-4 text-sm text-muted">
             <MapPin size={14} aria-hidden className="mr-1 inline-block align-[-2px]" />
             {site.location}

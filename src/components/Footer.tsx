@@ -24,10 +24,10 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-line">
-      <div className={`${container} grid gap-10 py-12 md:grid-cols-[1.5fr_1fr_1fr]`}>
+    <footer className="theme-dark bg-background text-foreground">
+      <div className={`${container} grid gap-10 py-16 md:grid-cols-[1.5fr_1fr_1fr]`}>
         <div>
-          <p className="flex items-center gap-2.5 font-semibold">
+          <p className="flex items-center gap-2.5 font-bold tracking-[-0.01em]">
             <Image src={site.logo} alt="" width={32} height={32} unoptimized className="size-8" />
             {site.name}
           </p>
@@ -35,7 +35,7 @@ export function Footer() {
         </div>
 
         <nav aria-label="Footer">
-          <p className="mb-3 text-sm font-medium">Quick links</p>
+          <p className="mb-3 text-sm font-semibold">Quick links</p>
           <ul className="space-y-2">
             {footerLinks.map((link) => (
               <li key={link.href}>
@@ -48,22 +48,24 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="mb-3 text-sm font-medium">Find us online</p>
+          <p className="mb-3 text-sm font-semibold">Find us online</p>
           <SocialLinks />
         </div>
       </div>
 
-      <div className={`${container} flex items-center justify-between gap-4 border-t border-line py-6`}>
-        <p className="text-sm text-muted">
-          © {year ?? ""} {site.name}. All rights reserved.
-        </p>
-        <button
-          type="button"
-          onClick={backToTop}
-          className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-line px-4 py-2 text-sm text-muted hover:border-accent hover:text-foreground"
-        >
-          <ArrowUp size={16} aria-hidden /> Back to top
-        </button>
+      <div className={container}>
+        <div className="flex items-center justify-between gap-4 border-t border-line py-6">
+          <p className="text-sm text-muted">
+            © {year ?? ""} {site.name}. All rights reserved.
+          </p>
+          <button
+            type="button"
+            onClick={backToTop}
+            className="inline-flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-line px-4 text-sm font-medium text-muted transition-colors hover:border-foreground/25 hover:text-foreground"
+          >
+            <ArrowUp size={16} aria-hidden /> Back to top
+          </button>
+        </div>
       </div>
     </footer>
   );

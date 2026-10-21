@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { site } from "@/data/site";
-import { buttonPrimary, container } from "./ui";
+import { buttonPrimary, container, iconButton } from "./ui";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -29,13 +29,13 @@ export function Navbar() {
 
   return (
     <header
-      // Mobile: always an opaque bar so content never shows through. Desktop: transparent until scrolled.
-      className={`sticky top-0 z-50 border-b border-line bg-background/95 backdrop-blur-xl transition-colors duration-300 ${
-        scrolled || open ? "" : "md:border-transparent md:bg-transparent md:backdrop-blur-none"
+      // White bar with a bottom border; once scrolled it turns slightly translucent and blurred.
+      className={`sticky top-0 z-50 border-b border-line transition-colors duration-300 ${
+        scrolled || open ? "bg-background/90 backdrop-blur-md" : "bg-background"
       }`}
     >
       <nav aria-label="Main" className={`${container} flex h-16 items-center justify-between`}>
-        <a href="#top" className="flex min-w-0 items-center gap-2 font-semibold tracking-tight md:gap-2.5" onClick={close}>
+        <a href="#top" className="flex min-w-0 items-center gap-2 font-bold tracking-[-0.01em] md:gap-2.5" onClick={close}>
           <Image src={site.logo} alt="" width={32} height={32} unoptimized className="size-7 shrink-0 md:size-8" />
           <span className="text-[15px] whitespace-nowrap md:text-base">{site.name}</span>
         </a>
@@ -43,7 +43,7 @@ export function Navbar() {
         <ul className="hidden items-center gap-8 lg:flex">
           {site.nav.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="text-sm text-muted transition-colors hover:text-foreground">
+              <a href={link.href} className="text-[15px] font-medium text-muted transition-colors hover:text-foreground">
                 {link.label}
               </a>
             </li>
@@ -51,12 +51,12 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a href={site.primaryCta.href} className={`${buttonPrimary} !py-2 max-md:hidden`}>
+          <a href={site.primaryCta.href} className={`${buttonPrimary} max-md:hidden`}>
             {site.primaryCta.label}
           </a>
           <button
             type="button"
-            className="grid size-11 shrink-0 place-items-center rounded-full border border-line lg:hidden"
+            className={`${iconButton} text-foreground lg:hidden`}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -83,7 +83,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={close}
-                    className="block rounded-lg px-3 py-3 text-lg text-foreground hover:bg-white/5"
+                    className="block rounded-xl px-3 py-3 text-lg font-medium text-foreground hover:bg-surface"
                   >
                     {link.label}
                   </a>

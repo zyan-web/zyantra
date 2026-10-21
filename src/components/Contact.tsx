@@ -6,12 +6,12 @@ import { site } from "@/data/site";
 import { WhatsappIcon } from "./BrandIcons";
 import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
-import { buttonPrimary, buttonSecondary, container } from "./ui";
+import { buttonPrimary, buttonSecondary, card, container, eyebrow, heading2, lead, sectionY } from "./ui";
 
 type Status = "idle" | "sending" | "success" | "error";
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-surface-2 px-4 py-3 text-foreground placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent";
+  "w-full rounded-xl border border-line bg-card px-4 py-3 text-foreground placeholder:text-muted transition-colors focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent";
 
 export function Contact() {
   const [interests, setInterests] = useState<string[]>([]);
@@ -63,19 +63,15 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className={`${container} py-14 md:py-28`}>
-      <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-6 sm:p-10 md:p-14">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-40 -right-40 size-96 rounded-full bg-accent opacity-20 blur-[120px]"
-        />
-        <div className="relative grid gap-12 lg:grid-cols-[1fr_1.3fr]">
+    <section id="contact" aria-labelledby="contact-title" className={`${container} ${sectionY}`}>
+      <div className={`p-6 sm:p-10 md:p-12 ${card}`}>
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr]">
           <Reveal>
-            <p className="mb-3 text-sm font-medium tracking-wide text-accent-strong uppercase">Contact</p>
-            <h2 id="contact-title" className="text-[clamp(1.75rem,6.5vw,3rem)] leading-tight font-semibold tracking-tight text-balance">
-              {site.contact.heading} <span className="accent-word">{site.contact.accent}</span>
+            <p className={eyebrow}>Contact</p>
+            <h2 id="contact-title" className={heading2}>
+              {site.contact.heading} {site.contact.accent}
             </h2>
-            <p className="mt-4 text-muted sm:text-lg">{site.contact.subtext}</p>
+            <p className={`mt-4 ${lead}`}>{site.contact.subtext}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <WhatsAppLink className={buttonSecondary}>
                 <WhatsappIcon width={18} height={18} /> Chat on WhatsApp
@@ -91,7 +87,7 @@ export function Contact() {
           <Reveal delay={0.1}>
             <form onSubmit={onSubmit} className="space-y-6">
               <fieldset>
-                <legend className="mb-3 text-sm font-medium">What can we help with?</legend>
+                <legend className="mb-3 text-sm font-semibold">What can we help with?</legend>
                 <div className="flex flex-wrap gap-2">
                   {site.contact.interests.map((interest) => {
                     const selected = interests.includes(interest);
@@ -101,10 +97,10 @@ export function Contact() {
                         type="button"
                         aria-pressed={selected}
                         onClick={() => toggleInterest(interest)}
-                        className={`min-h-11 rounded-full border px-4 py-2 text-sm transition-colors ${
+                        className={`min-h-11 rounded-xl border px-4 py-2 text-sm font-medium transition-colors ${
                           selected
-                            ? "border-accent bg-accent text-white"
-                            : "border-line bg-surface-2 text-muted hover:border-accent/60 hover:text-foreground"
+                            ? "border-accent bg-accent-tint text-accent"
+                            : "border-line bg-card text-foreground hover:border-foreground/25"
                         }`}
                       >
                         {interest}
@@ -116,20 +112,20 @@ export function Contact() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="contact-name" className="mb-2 block text-sm font-medium">
+                  <label htmlFor="contact-name" className="mb-2 block text-sm font-semibold">
                     Name
                   </label>
                   <input id="contact-name" name="name" type="text" required autoComplete="name" placeholder="Your name" className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="contact-email" className="mb-2 block text-sm font-medium">
+                  <label htmlFor="contact-email" className="mb-2 block text-sm font-semibold">
                     Email
                   </label>
                   <input id="contact-email" name="email" type="email" required autoComplete="email" placeholder="you@company.com" className={inputClass} />
                 </div>
               </div>
               <div>
-                <label htmlFor="contact-message" className="mb-2 block text-sm font-medium">
+                <label htmlFor="contact-message" className="mb-2 block text-sm font-semibold">
                   Message
                 </label>
                 <textarea
@@ -159,13 +155,13 @@ export function Contact() {
 
               <div aria-live="polite" role="status">
                 {status === "success" && (
-                  <p className="flex items-start gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-300">
+                  <p className="flex items-start gap-2 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
                     <CheckCircle2 size={18} className="mt-0.5 shrink-0" aria-hidden />
                     Thanks! Your message is on its way. We&apos;ll get back to you within 24 hours.
                   </p>
                 )}
                 {status === "error" && (
-                  <p className="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
+                  <p className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
                     <AlertCircle size={18} className="mt-0.5 shrink-0" aria-hidden />
                     {errorMessage || "Something went wrong. Please try again or use email/WhatsApp."}
                   </p>

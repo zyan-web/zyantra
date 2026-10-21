@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import type { CSSProperties } from "react";
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import { site } from "@/data/site";
 import { MotionProvider } from "@/components/MotionProvider";
 import "./globals.css";
 
-const sans = Geist({
+const sans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
 });
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08080b",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -48,9 +47,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${sans.variable} ${serif.variable} antialiased`}
-      style={{ "--accent": site.accent } as CSSProperties}
     >
-      <body className="min-h-dvh">
+      <body className="min-h-dvh bg-background text-foreground">
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

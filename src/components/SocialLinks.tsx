@@ -11,6 +11,7 @@ import {
 } from "./BrandIcons";
 import { WhatsAppLink } from "./WhatsAppLink";
 import { hasWhatsapp } from "@/lib/whatsapp";
+import { iconButton } from "./ui";
 
 // Any link left empty in site.ts is hidden.
 const socials = [
@@ -24,8 +25,7 @@ const socials = [
 
 const email = site.links.email && `mailto:${site.links.email}`;
 
-const iconClass =
-  "grid size-11 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground";
+const iconClass = iconButton;
 
 /** `whatsapp={false}` drops the WhatsApp icon, e.g. where the floating button already offers it. */
 export function SocialLinks({ className = "", whatsapp = true }: { className?: string; whatsapp?: boolean }) {

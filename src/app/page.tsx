@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-xl focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
       >
         Skip to content
       </a>
@@ -28,14 +28,20 @@ export default function Home() {
         <Hero />
         <SkillsMarquee />
         <Audience />
-        <Services />
+        <div className="border-y border-line bg-surface">
+          <Services />
+        </div>
         <Projects />
-        <Problems />
+        <div className="border-y border-line bg-surface">
+          <Problems />
+        </div>
         <Stats />
         <Founder />
         <Reviews />
         <CallToAction />
-        <Contact />
+        <div className="border-t border-line bg-surface">
+          <Contact />
+        </div>
       </main>
       <Footer />
       <FloatingWhatsApp />

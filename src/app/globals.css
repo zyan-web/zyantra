@@ -1,39 +1,56 @@
 @import "tailwindcss";
 
 /*
- * Theme tokens. The accent colour is set from `site.accent` in src/data/site.ts
- * (applied to <html> in layout.tsx); the value here is only the fallback.
- * Every accent shade below is derived from --accent, so one change re-themes the site.
+ * Design tokens: every colour, the radius and the shadow live here.
+ * `.theme-dark` reuses the same names for the dark footer.
+ * site.accent (src/data/site.ts, for the OG image) and public/logo.svg repeat the accent hex.
  */
 :root {
-  --accent: #7c5cff;
-  --accent-soft: color-mix(in oklab, var(--accent) 16%, transparent);
-  --accent-strong: color-mix(in oklab, var(--accent) 80%, white);
+  --accent: #5b3df5;
+  --accent-hover: #4a2fe0;
+  --accent-tint: #f1eeff; /* badges and icon backgrounds only */
 
-  --background: #08080b;
-  --surface: #111116;
-  --surface-2: #17171e;
-  --border: rgb(255 255 255 / 0.08);
-  --foreground: #ededf2;
-  --muted: #a3a3b2;
+  --background: #ffffff;
+  --surface: #f7f8fa; /* alternate sections, placeholders */
+  --card: #ffffff;
+  --border: #e6e8ec;
+  --foreground: #0b0d12;
+  --muted: #5b6170;
+
+  --radius: 12px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.theme-dark {
+  --background: #0b0d12;
+  --surface: #12151c;
+  --card: #12151c;
+  --border: #262a33;
+  --foreground: #f3f4f6;
+  --muted: #a3a9b6;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
   --color-line: var(--border);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-accent-strong: var(--accent-strong);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-tint: var(--accent-tint);
+  --radius-xl: var(--radius);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   scroll-padding-top: 5rem;
 }
 
@@ -52,6 +69,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   overflow-x: hidden; /* fallback for older Android browsers without `clip` */
   overflow-x: clip;
 }
@@ -71,7 +90,7 @@ body {
   font-family: var(--font-serif), ui-serif, Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  color: var(--accent-strong);
+  color: var(--accent);
 }
 
 .no-scrollbar {

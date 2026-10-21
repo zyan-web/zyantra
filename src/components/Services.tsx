@@ -4,7 +4,7 @@ import { Bot, Check, ChevronLeft, ChevronRight, Cloud, CodeXml, Megaphone, Spark
 import { useRef, type PointerEvent } from "react";
 import { site, type Service } from "@/data/site";
 import { SectionHeading } from "./SectionHeading";
-import { container } from "./ui";
+import { card, cardLift, container, iconButton, iconTile, sectionY } from "./ui";
 
 const icons: Record<Service["icon"], typeof Bot> = {
   bot: Bot,
@@ -55,13 +55,12 @@ export function Services() {
   };
 
   return (
-    <section id="services" aria-labelledby="services-title" className="py-14 md:py-28">
+    <section id="services" aria-labelledby="services-title" className={sectionY}>
       <div className={`${container} flex flex-col gap-6 md:flex-row md:items-end md:justify-between`}>
         <SectionHeading
           id="services-title"
           eyebrow="Services"
-          title="Everything you need to"
-          accent="build and grow"
+          title="Everything you need to build and grow"
           description="Five services, one team. Drag or swipe through them, then pick what fits your goals."
         />
         <div className="mb-10 hidden gap-2 md:mb-14 md:flex">
@@ -69,7 +68,7 @@ export function Services() {
             type="button"
             onClick={() => scrollByCard(-1)}
             aria-label="Previous service"
-            className="grid size-11 place-items-center rounded-full border border-line hover:border-accent hover:bg-accent-soft"
+            className={iconButton}
           >
             <ChevronLeft size={20} aria-hidden />
           </button>
@@ -77,7 +76,7 @@ export function Services() {
             type="button"
             onClick={() => scrollByCard(1)}
             aria-label="Next service"
-            className="grid size-11 place-items-center rounded-full border border-line hover:border-accent hover:bg-accent-soft"
+            className={iconButton}
           >
             <ChevronRight size={20} aria-hidden />
           </button>
@@ -93,7 +92,7 @@ export function Services() {
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
         onPointerCancel={endDrag}
-        className="no-scrollbar flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 select-none active:cursor-grabbing sm:gap-6 sm:scroll-px-6 sm:px-6 lg:scroll-px-[max(2rem,calc((100vw-72rem)/2+2rem))] lg:px-[max(2rem,calc((100vw-72rem)/2+2rem))]"
+        className="no-scrollbar flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pt-1 pb-6 select-none active:cursor-grabbing sm:gap-6 sm:scroll-px-6 sm:px-6 lg:scroll-px-[max(2rem,calc((100vw-75rem)/2+2rem))] lg:px-[max(2rem,calc((100vw-75rem)/2+2rem))]"
       >
         {site.services.map((service, i) => {
           const Icon = icons[service.icon];
@@ -102,19 +101,19 @@ export function Services() {
               key={service.title}
               className="w-[85%] max-w-[26rem] shrink-0 snap-start sm:w-[60%] lg:w-[24rem]"
             >
-              <article className="flex h-full flex-col rounded-2xl border border-line bg-gradient-to-b from-surface-2 to-surface p-6 md:p-8">
+              <article className={`flex h-full flex-col p-6 md:p-8 ${card} ${cardLift}`}>
                 <div className="flex items-center justify-between">
-                  <span className="grid size-12 place-items-center rounded-xl bg-accent-soft text-accent-strong">
-                    <Icon size={24} aria-hidden />
+                  <span className={iconTile}>
+                    <Icon size={20} aria-hidden />
                   </span>
                   <span className="font-mono text-sm text-muted">0{i + 1}</span>
                 </div>
-                <h3 className="mt-8 text-2xl font-semibold">{service.title}</h3>
-                <p className="mt-3 text-muted">{service.description}</p>
-                <ul className="mt-6 space-y-2 border-t border-line pt-6">
+                <h3 className="mt-6 text-xl font-semibold tracking-[-0.01em]">{service.title}</h3>
+                <p className="mt-2 mb-6 leading-relaxed text-muted">{service.description}</p>
+                <ul className="mt-auto space-y-2.5 border-t border-line pt-6">
                   {service.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm">
-                      <Check size={16} className="mt-0.5 shrink-0 text-accent-strong" aria-hidden />
+                    <li key={point} className="flex items-start gap-2 text-[15px] leading-normal">
+                      <Check size={16} className="mt-0.5 shrink-0 text-muted" aria-hidden />
                       {point}
                     </li>
                   ))}

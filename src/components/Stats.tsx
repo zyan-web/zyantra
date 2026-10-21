@@ -4,7 +4,7 @@ import { animate, inView } from "motion/react";
 import { useEffect, useRef } from "react";
 import { site, type Stat } from "@/data/site";
 import { inViewAmount, shouldAnimateIn } from "@/lib/motion";
-import { container } from "./ui";
+import { container, sectionY } from "./ui";
 
 const columns = ["", "sm:grid-cols-1", "sm:grid-cols-2", "sm:grid-cols-3", "sm:grid-cols-2 md:grid-cols-4"];
 
@@ -51,12 +51,12 @@ export function Stats() {
   if (stats.length === 0) return null;
 
   return (
-    <section aria-label="Stats" className={`${container} py-12 md:py-16`}>
-      <dl className={`grid gap-px overflow-hidden rounded-2xl border border-line bg-line ${columns[stats.length]}`}>
+    <section aria-label="Stats" className={`${container} ${sectionY}`}>
+      <dl className={`grid gap-px overflow-hidden rounded-xl border border-line bg-line shadow-card ${columns[stats.length]}`}>
         {stats.map((stat) => (
-          <div key={stat.label} className="flex flex-col-reverse gap-2 bg-surface p-6 text-center md:p-8">
+          <div key={stat.label} className="flex flex-col-reverse gap-2 bg-card px-6 py-8 text-center md:py-10">
             <dt className="text-sm text-muted">{stat.label}</dt>
-            <dd className="text-[clamp(2.25rem,9vw,3rem)] leading-none font-semibold tracking-tight text-accent-strong">
+            <dd className="text-[clamp(2.5rem,9vw,3.5rem)] leading-none font-bold tracking-[-0.03em] text-foreground">
               <CountUp stat={stat} />
               <span className="sr-only">
                 {stat.value}

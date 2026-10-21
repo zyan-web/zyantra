@@ -96,8 +96,8 @@ export const site = {
   location: "Based in Pakistan, working with clients worldwide",
   /** Your deployed domain, no trailing slash. Used for SEO, sitemap and robots. */
   url: "https://zyanlimited.netlify.app",
-  /** The one accent colour for the whole site (CSS variable --accent, OG image). public/logo.svg has its own copy of this colour. */
-  accent: "#7C5CFF",
+  /** Accent for the OG image. The site's colours live in src/app/globals.css; keep this and public/logo.svg in sync with --accent there. */
+  accent: "#5B3DF5",
 
   seo: {
     title: `${name} | AI Engineering, Web & App Development, Digital Marketing`,
