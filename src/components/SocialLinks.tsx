@@ -27,7 +27,8 @@ const email = site.links.email && `mailto:${site.links.email}`;
 const iconClass =
   "grid size-11 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground";
 
-export function SocialLinks({ className = "" }: { className?: string }) {
+/** `whatsapp={false}` drops the WhatsApp icon, e.g. where the floating button already offers it. */
+export function SocialLinks({ className = "", whatsapp = true }: { className?: string; whatsapp?: boolean }) {
   return (
     <ul className={`flex flex-wrap gap-2 ${className}`}>
       {socials.map(({ label, href, Icon }) => (
@@ -37,7 +38,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
           </a>
         </li>
       ))}
-      {hasWhatsapp && (
+      {whatsapp && hasWhatsapp && (
         <li>
           <WhatsAppLink aria-label="WhatsApp (opens in new tab)" className={iconClass}>
             <WhatsappIcon width={18} height={18} />

@@ -56,7 +56,8 @@ export function Hero() {
         </div>
 
         <nav aria-label="Social links" className="hero-in mt-8 [animation-delay:320ms]">
-          <SocialLinks className="justify-center" />
+          {/* Max 4 icons per row on phones keeps them clear of the floating WhatsApp button */}
+          <SocialLinks className="mx-auto max-w-[13rem] justify-center md:max-w-none" whatsapp={false} />
         </nav>
       </div>
     </section>
