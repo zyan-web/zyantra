@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { site } from "@/data/site";
 import { WhatsappIcon } from "./BrandIcons";
+import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
 import { buttonPrimary, buttonSecondary, container } from "./ui";
 
@@ -15,12 +16,10 @@ export function CallToAction() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted sm:text-lg">{cta.subtext}</p>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-            {site.links.whatsapp && (
-              <a href={site.links.whatsapp} target="_blank" rel="noopener noreferrer" className={buttonSecondary}>
-                <WhatsappIcon width={18} height={18} /> {cta.whatsappLabel}
-                <span className="sr-only"> on WhatsApp (opens in new tab)</span>
-              </a>
-            )}
+            <WhatsAppLink className={buttonSecondary}>
+              <WhatsappIcon width={18} height={18} /> {cta.whatsappLabel}
+              <span className="sr-only"> on WhatsApp (opens in new tab)</span>
+            </WhatsAppLink>
             <a href={site.primaryCta.href} className={buttonPrimary}>
               {site.primaryCta.label} <ArrowRight size={16} aria-hidden />
             </a>

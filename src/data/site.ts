@@ -111,7 +111,13 @@ export const site = {
     fiverr: "https://www.fiverr.com/alamsher6252",
     upwork: "https://www.upwork.com/freelancers/~012d16ba0be40a0ecb",
     email: "bloomwaxiri@gmail.com",
-    whatsapp: "https://wa.me/923091902453",
+  },
+
+  /** WhatsApp chat used by every WhatsApp button. Leave `phone` empty to hide them all. */
+  whatsapp: {
+    /** Country code + number, digits only. */
+    phone: "923091902453",
+    message: "Hi! I came across your website and I'd like to discuss a project.",
   },
 
   nav: [

@@ -9,8 +9,8 @@ import {
   WhatsappIcon,
   XIcon,
 } from "./BrandIcons";
-
-const MailIcon = (props: { width: number; height: number }) => <Mail size={props.width} aria-hidden />;
+import { WhatsAppLink } from "./WhatsAppLink";
+import { hasWhatsapp } from "@/lib/whatsapp";
 
 // Any link left empty in site.ts is hidden.
 const socials = [
@@ -20,28 +20,37 @@ const socials = [
   { label: "X", href: site.links.x, Icon: XIcon },
   { label: "Fiverr", href: site.links.fiverr, Icon: FiverrIcon },
   { label: "Upwork", href: site.links.upwork, Icon: UpworkIcon },
-  { label: "WhatsApp", href: site.links.whatsapp, Icon: WhatsappIcon },
-  { label: "Email", href: site.links.email && `mailto:${site.links.email}`, Icon: MailIcon },
 ].filter((s) => s.href);
+
+const email = site.links.email && `mailto:${site.links.email}`;
+
+const iconClass =
+  "grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground";
 
 export function SocialLinks({ className = "" }: { className?: string }) {
   return (
     <ul className={`flex flex-wrap gap-2 ${className}`}>
-      {socials.map(({ label, href, Icon }) => {
-        const external = !href.startsWith("mailto:");
-        return (
-          <li key={label}>
-            <a
-              href={href}
-              {...(external && { target: "_blank", rel: "noopener noreferrer" })}
-              aria-label={external ? `${label} (opens in new tab)` : label}
-              className="grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground"
-            >
-              <Icon width={18} height={18} />
-            </a>
-          </li>
-        );
-      })}
+      {socials.map(({ label, href, Icon }) => (
+        <li key={label}>
+          <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens in new tab)`} className={iconClass}>
+            <Icon width={18} height={18} />
+          </a>
+        </li>
+      ))}
+      {hasWhatsapp && (
+        <li>
+          <WhatsAppLink aria-label="WhatsApp (opens in new tab)" className={iconClass}>
+            <WhatsappIcon width={18} height={18} />
+          </WhatsAppLink>
+        </li>
+      )}
+      {email && (
+        <li>
+          <a href={email} aria-label="Email" className={iconClass}>
+            <Mail size={18} aria-hidden />
+          </a>
+        </li>
+      )}
     </ul>
   );
 }

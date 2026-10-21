@@ -4,6 +4,7 @@ import { AlertCircle, CheckCircle2, Loader2, Mail, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { site } from "@/data/site";
 import { WhatsappIcon } from "./BrandIcons";
+import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
 import { buttonPrimary, buttonSecondary, container } from "./ui";
 
@@ -76,11 +77,9 @@ export function Contact() {
             </h2>
             <p className="mt-4 text-muted sm:text-lg">{site.contact.subtext}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-              {site.links.whatsapp && (
-                <a href={site.links.whatsapp} target="_blank" rel="noopener noreferrer" className={buttonSecondary}>
-                  <WhatsappIcon width={18} height={18} /> Chat on WhatsApp
-                </a>
-              )}
+              <WhatsAppLink className={buttonSecondary}>
+                <WhatsappIcon width={18} height={18} /> Chat on WhatsApp
+              </WhatsAppLink>
               {site.links.email && (
                 <a href={`mailto:${site.links.email}`} className={buttonSecondary}>
                   <Mail size={18} aria-hidden /> Email us
