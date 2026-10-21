@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   icons: { icon: site.logo },
   authors: [{ name: site.name }],
   alternates: { canonical: "/" },
+  verification: { google: "ZyTftcWOYf9W-uEcTjllo_nwGGwucrWdJTglLfd9z2Q" },
   openGraph: {
     type: "website",
     url: "/",
