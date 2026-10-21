@@ -9,7 +9,7 @@ export function Reviews() {
   if (site.reviews.length === 0) return null;
 
   return (
-    <section id="reviews" aria-labelledby="reviews-title" className={`${container} py-20 md:py-28`}>
+    <section id="reviews" aria-labelledby="reviews-title" className={`${container} py-14 md:py-28`}>
       <SectionHeading id="reviews-title" eyebrow="Reviews" title="What clients" accent="say" />
       <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {site.reviews.map((review, i) => (

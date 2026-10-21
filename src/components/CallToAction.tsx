@@ -11,7 +11,7 @@ export function CallToAction() {
     <section aria-labelledby="cta-title" className={`${container} py-12 md:py-16`}>
       <Reveal>
         <div className="relative isolate overflow-hidden rounded-3xl border border-accent/30 bg-[radial-gradient(ellipse_80%_80%_at_50%_120%,var(--accent-soft),transparent_70%)] px-6 py-14 text-center sm:px-12 md:py-20">
-          <h2 id="cta-title" className="mx-auto max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+          <h2 id="cta-title" className="mx-auto max-w-3xl text-[clamp(1.75rem,6.5vw,3rem)] leading-tight font-semibold tracking-tight text-balance">
             {cta.heading} <span className="accent-word">{cta.accent}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted sm:text-lg">{cta.subtext}</p>

@@ -12,7 +12,7 @@ const hasPhoto = existsSync(join(process.cwd(), "public", site.founder.photo));
 export function Founder() {
   const { founder } = site;
   return (
-    <section id="founder" aria-labelledby="founder-title" className={`${container} py-20 md:py-28`}>
+    <section id="founder" aria-labelledby="founder-title" className={`${container} py-14 md:py-28`}>
       <div className="grid items-center gap-10 rounded-3xl border border-line bg-surface p-6 sm:p-10 md:grid-cols-[minmax(0,20rem)_1fr] md:gap-14 md:p-14">
         <Reveal>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border border-line bg-surface-2">
@@ -38,7 +38,7 @@ export function Founder() {
 
         <Reveal delay={0.1}>
           <p className="mb-3 text-sm font-medium tracking-wide text-accent-strong uppercase">Meet the founder</p>
-          <h2 id="founder-title" className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 id="founder-title" className="text-[clamp(1.75rem,6.5vw,3rem)] leading-tight font-semibold tracking-tight text-balance">
             {founder.name}, <span className="accent-word">{founder.title}</span>
           </h2>
           <div className="mt-6 space-y-4 text-muted sm:text-lg">

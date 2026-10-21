@@ -29,16 +29,15 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled || open
-          ? "border-line bg-background/80 backdrop-blur-xl"
-          : "border-transparent bg-transparent"
+      // Mobile: always an opaque bar so content never shows through. Desktop: transparent until scrolled.
+      className={`sticky top-0 z-50 border-b border-line bg-background/95 backdrop-blur-xl transition-colors duration-300 ${
+        scrolled || open ? "" : "md:border-transparent md:bg-transparent md:backdrop-blur-none"
       }`}
     >
       <nav aria-label="Main" className={`${container} flex h-16 items-center justify-between`}>
-        <a href="#top" className="flex items-center gap-2.5 font-semibold tracking-tight" onClick={close}>
-          <Image src={site.logo} alt="" width={32} height={32} unoptimized className="size-8" />
-          <span>{site.name}</span>
+        <a href="#top" className="flex min-w-0 items-center gap-2 font-semibold tracking-tight md:gap-2.5" onClick={close}>
+          <Image src={site.logo} alt="" width={32} height={32} unoptimized className="size-7 shrink-0 md:size-8" />
+          <span className="text-[15px] whitespace-nowrap md:text-base">{site.name}</span>
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
@@ -52,12 +51,12 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a href={site.primaryCta.href} className={`${buttonPrimary} hidden !py-2 sm:inline-flex`}>
+          <a href={site.primaryCta.href} className={`${buttonPrimary} !py-2 max-md:hidden`}>
             {site.primaryCta.label}
           </a>
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-full border border-line lg:hidden"
+            className="grid size-11 shrink-0 place-items-center rounded-full border border-line lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"

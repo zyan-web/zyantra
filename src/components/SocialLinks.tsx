@@ -25,7 +25,7 @@ const socials = [
 const email = site.links.email && `mailto:${site.links.email}`;
 
 const iconClass =
-  "grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground";
+  "grid size-11 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-foreground";
 
 export function SocialLinks({ className = "" }: { className?: string }) {
   return (

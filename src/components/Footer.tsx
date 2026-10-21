@@ -53,14 +53,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className={`${container} flex items-center justify-between gap-4 border-t border-line pt-6 pb-24 md:pb-6`}>
+      <div className={`${container} flex items-center justify-between gap-4 border-t border-line py-6`}>
         <p className="text-sm text-muted">
           © {year ?? ""} {site.name}. All rights reserved.
         </p>
         <button
           type="button"
           onClick={backToTop}
-          className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-muted hover:border-accent hover:text-foreground"
+          className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-line px-4 py-2 text-sm text-muted hover:border-accent hover:text-foreground"
         >
           <ArrowUp size={16} aria-hidden /> Back to top
         </button>

@@ -38,11 +38,11 @@ function ProjectImage({ project }: { project: Project }) {
 }
 
 const linkClass =
-  "inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-2 text-sm hover:border-accent hover:bg-accent-soft";
+  "inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full border border-line px-3.5 py-2 text-sm hover:border-accent hover:bg-accent-soft";
 
 export function Projects() {
   return (
-    <section id="projects" aria-labelledby="projects-title" className={`${container} py-20 md:py-28`}>
+    <section id="projects" aria-labelledby="projects-title" className={`${container} py-14 md:py-28`}>
       <SectionHeading
         id="projects-title"
         eyebrow="Selected work"

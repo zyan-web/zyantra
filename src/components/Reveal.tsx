@@ -1,9 +1,14 @@
 "use client";
 
-import { motion } from "motion/react";
-import type { ReactNode } from "react";
+import { animate, inView } from "motion/react";
+import { useEffect, useRef, type ReactNode } from "react";
+import { inViewAmount, shouldAnimateIn } from "@/lib/motion";
 
-/** Fades content up into view on scroll. Reduced-motion users get the fade only (via MotionConfig). */
+/**
+ * Fades content up as it scrolls into view (once, at 10% visible).
+ * Rendered fully visible on the server and without JS; reduced-motion users,
+ * browsers without IntersectionObserver and content already on screen are never hidden.
+ */
 export function Reveal({
   children,
   delay = 0,
@@ -13,15 +18,39 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !shouldAnimateIn(el)) return;
+
+    el.style.opacity = "0";
+    el.style.transform = "translateY(24px)";
+    const show = () => {
+      el.style.opacity = "";
+      el.style.transform = "";
+    };
+    const stop = inView(
+      el,
+      () => {
+        stop();
+        animate(
+          el,
+          { opacity: [0, 1], transform: ["translateY(24px)", "translateY(0px)"] },
+          { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+        ).then(show, show);
+      },
+      { amount: inViewAmount },
+    );
+    return () => {
+      stop();
+      show();
+    };
+  }, [delay]);
+
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -12,8 +12,8 @@ export function Problems() {
   const baseId = useId();
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className={`${container} py-20 md:py-28`}>
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+    <section id="faq" aria-labelledby="faq-title" className={`${container} py-14 md:py-28`}>
+      <div className="grid lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <SectionHeading
           id="faq-title"
           eyebrow="Sound familiar?"

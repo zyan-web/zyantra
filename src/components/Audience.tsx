@@ -8,7 +8,7 @@ const icons = [Rocket, Building2, Handshake];
 
 export function Audience() {
   return (
-    <section aria-labelledby="audience-title" className={`${container} py-20 md:py-28`}>
+    <section aria-labelledby="audience-title" className={`${container} py-14 md:py-28`}>
       <SectionHeading id="audience-title" eyebrow="Who we build for" title="Built for businesses ready to" accent="grow smarter." />
       <div className="grid gap-4 md:grid-cols-3 md:gap-6">
         {site.audiences.map((audience, i) => {

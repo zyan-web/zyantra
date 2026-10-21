@@ -63,7 +63,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className={`${container} py-20 md:py-28`}>
+    <section id="contact" aria-labelledby="contact-title" className={`${container} py-14 md:py-28`}>
       <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-6 sm:p-10 md:p-14">
         <div
           aria-hidden
@@ -72,7 +72,7 @@ export function Contact() {
         <div className="relative grid gap-12 lg:grid-cols-[1fr_1.3fr]">
           <Reveal>
             <p className="mb-3 text-sm font-medium tracking-wide text-accent-strong uppercase">Contact</p>
-            <h2 id="contact-title" className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-5xl">
+            <h2 id="contact-title" className="text-[clamp(1.75rem,6.5vw,3rem)] leading-tight font-semibold tracking-tight text-balance">
               {site.contact.heading} <span className="accent-word">{site.contact.accent}</span>
             </h2>
             <p className="mt-4 text-muted sm:text-lg">{site.contact.subtext}</p>
@@ -101,7 +101,7 @@ export function Contact() {
                         type="button"
                         aria-pressed={selected}
                         onClick={() => toggleInterest(interest)}
-                        className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+                        className={`min-h-11 rounded-full border px-4 py-2 text-sm transition-colors ${
                           selected
                             ? "border-accent bg-accent text-white"
                             : "border-line bg-surface-2 text-muted hover:border-accent/60 hover:text-foreground"

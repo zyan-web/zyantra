@@ -55,7 +55,7 @@ export function Services() {
   };
 
   return (
-    <section id="services" aria-labelledby="services-title" className="py-20 md:py-28">
+    <section id="services" aria-labelledby="services-title" className="py-14 md:py-28">
       <div className={`${container} flex flex-col gap-6 md:flex-row md:items-end md:justify-between`}>
         <SectionHeading
           id="services-title"
