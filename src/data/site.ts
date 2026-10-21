@@ -95,7 +95,7 @@ export const site = {
     "We build intelligent digital solutions that help businesses automate workflows, streamline operations, and scale faster.",
   location: "Based in Pakistan, working with clients worldwide",
   /** Your deployed domain, no trailing slash. Used for SEO, sitemap and robots. */
-  url: "https://zyantra.vercel.app",
+  url: "https://zyantra.netlify.app",
   /** The one accent colour for the whole site (CSS variable --accent, OG image). public/logo.svg has its own copy of this colour. */
   accent: "#7C5CFF",
 
